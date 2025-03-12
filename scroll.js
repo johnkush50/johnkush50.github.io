@@ -10,24 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 600) {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Check if user scrolled more than threshold
-            if (Math.abs(lastScrollTop - currentScroll) <= scrollThreshold) return;
-            
-            // Check scroll direction
-            if (currentScroll > lastScrollTop) {
-                // Scrolling down
-                header.classList.add('header-hidden');
-            } else {
-                // Scrolling up or reached top
-                header.classList.remove('header-hidden');
-            }
-            
-            // Always show header at the very top
+            // Display header only at the very top of the page
             if (currentScroll <= 0) {
+                // At the top of the page
                 header.classList.remove('header-hidden');
+            } else {
+                // Not at the top of the page
+                header.classList.add('header-hidden');
             }
-            
-            lastScrollTop = currentScroll;
         } else {
             // On desktop, always show the header
             header.classList.remove('header-hidden');
@@ -45,4 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
+    
+    // Initialize header state on page load
+    handleScroll();
 });
