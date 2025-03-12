@@ -34,6 +34,7 @@ header {
     color: #fff;
     box-shadow: 0 2px 4px var(--light-shadow);
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
 }
 
 header h1 {
@@ -229,6 +230,11 @@ main section:nth-of-type(4) {
 .chatbot-header .chat-samples ul li.clicked {
     transform: scale(0.95);
     transition: transform 0.1s;
+}
+
+/* Hidden header style for mobile scroll behavior */
+.header-hidden {
+    transform: translateY(-100%);
 }
 
 /* Responsive design adjustments for phone screens */
