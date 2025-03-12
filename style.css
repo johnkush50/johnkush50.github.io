@@ -1,0 +1,232 @@
+/* Modern, Clean and Professional Style for Personal Website */
+
+/* Color Variables for a vibrant minimalist palette */
+:root {
+    --primary-color: #2C3E50;
+    --accent-color:  #E74C3C;
+    --background-color: #ECF0F1;
+    --text-color: #333333;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Google Font placeholder - include link in HTML head if needed */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease;
+    padding-top: 70px; /* for sticky header offset */
+}
+
+/* Header Section Styles */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 4px var(--light-shadow);
+    z-index: 1000;
+}
+
+header h1 {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Section Styles (About, Education, Skills, Contact) */
+main section {
+    padding: 60px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--light-shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Apply staggered animation delays for sections */
+main section:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+main section:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+main section:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+main section:nth-of-type(4) {
+    animation-delay: 0.8s;
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Skills Section Styles */
+#skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-around;
+    padding: 0;
+}
+
+#skills ul li {
+    background: var(--primary-color);
+    color: #fff;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+#skills ul li:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Contact Section Styles */
+#contact a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#contact a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media(max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    main section {
+        margin: 20px 10px;
+    }
+}
+
+/* Chatbot Section Styles */
+#chatbot {
+    margin: 20px auto;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--light-shadow);
+}
+
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-window {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--light-shadow);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.chat-input-container {
+    display: flex;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--light-shadow);
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+.chat-send {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-send:hover {
+    background-color: var(--accent-color);
+}
+
+.chatbot-header .chat-samples ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px auto 0;
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chatbot-header .chat-samples ul li {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    cursor: default;
+}
+
+.chatbot-header .chat-samples ul li:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.chatbot-header .chat-samples ul li.clicked {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
