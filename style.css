@@ -230,3 +230,25 @@ main section:nth-of-type(4) {
     transform: scale(0.95);
     transition: transform 0.1s;
 }
+
+/* Responsive design adjustments for phone screens */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    header h1, .chatbot-header h2 {
+        font-size: 1.5rem;
+    }
+    .chatbot-container {
+        padding: 10px;
+    }
+    .chat-window {
+        height: 200px;
+    }
+    .chat-input {
+        padding: 8px;
+    }
+    .chat-send {
+        padding: 8px 16px;
+    }
+}
