@@ -212,6 +212,17 @@ section h2::after {
     border-radius: 3px;
 }
 
+#contact h2::after,
+#chatbot .chatbot-header h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#settings h2::after {
+    left: 0;
+    transform: none;
+}
+
 /* ===== About Section ===== */
 #about p {
     font-size: 1.05rem;
