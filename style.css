@@ -19,6 +19,20 @@
     --transition: all 0.3s ease; /* Consistent transition */
 }
 
+/* Dark mode variables - These will be applied when the dark-mode class is added to the body */
+[data-theme="dark"] {
+    --primary-color: #4fa3e0; /* Brighter blue for dark theme */
+    --primary-dark: #2980b9;  
+    --primary-light: rgba(52, 152, 219, 0.2); /* Darker shade of blue but with transparency */
+    --text-color: #e1e1e1;    /* Light text for dark backgrounds */
+    --text-light: #b0b0b0;    /* Light secondary text */
+    --bg-color: #121212;      /* Dark background */
+    --card-bg: #1e1e1e;       /* Slightly lighter than background for cards */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);  /* Darker shadows for dark mode */
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.25);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.3);
+}
+
 /* ===== Reset & Base Styles ===== */
 * {
     margin: 0;
@@ -37,6 +51,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -156,6 +171,7 @@ section {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards;
+    transition: all 0.5s ease;
 }
 
 section:hover {
@@ -219,6 +235,7 @@ section h2::after {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
     margin-top: 1.5rem;
+    transition: all 0.5s ease;
 }
 
 #skills li {
@@ -257,6 +274,7 @@ section h2::after {
     border: 1px solid rgba(0,0,0,0.05);
     position: relative;
     padding: 1.5rem;
+    transition: all 0.5s ease;
 }
 
 .project-card::before {
@@ -376,6 +394,7 @@ section h2::after {
     padding: 1.5rem;
     overflow-y: auto;
     border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
 }
 
 .chat-input-container {
@@ -418,6 +437,107 @@ section h2::after {
 
 .chat-send:active {
     transform: translateY(0);
+}
+
+/* ===== Settings Section ===== */
+#settings {
+    max-width: 800px;
+    margin: 3rem auto;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--primary-light);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.toggle-label {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Toggle Switch Styling */
+.toggle-switch-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: var(--transition);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-input:checked + .toggle-switch {
+    background-color: var(--primary-color);
+}
+
+.toggle-input:checked + .toggle-switch::after {
+    transform: translateX(30px);
+}
+
+.toggle-input:focus + .toggle-switch {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+/* Dark Mode Specific Styles */
+[data-theme="dark"] header {
+    background-color: rgba(20, 20, 20, 0.95);
+}
+
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .chat-window {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .chat-input {
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .chat-samples li {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #70b8e2;
+}
+
+[data-theme="dark"] #skills li {
+    border-left-color: var(--primary-color);
 }
 
 /* ===== Footer Section ===== */
@@ -507,4 +627,9 @@ footer {
         width: 100%;
         border-radius: var(--border-radius);
     }
+}
+
+/* Setting tab icon styling */
+nav ul li a i.fa-cog {
+    margin-right: 5px;
 }
