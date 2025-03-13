@@ -1,98 +1,175 @@
-/* Modern, Clean and Professional Style for Personal Website */
+/* Import Google Fonts - Poppins for clean, modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Color Variables for a vibrant minimalist palette */
+/* ===== CSS Variables for Consistent Theming ===== */
 :root {
-    --primary-color: #2C3E50;
-    --accent-color:  #E74C3C;
-    --background-color: #ECF0F1;
-    --text-color: #333333;
-    --light-shadow: rgba(0, 0, 0, 0.1);
+    --primary-color: #3498db; /* Main blue accent color */
+    --primary-dark: #2980b9;  /* Darker shade for hover states */
+    --primary-light: #e8f4fd; /* Light shade for backgrounds */
+    --gradient-primary: linear-gradient(135deg, #3498db, #2574a9);
+    --accent-color: #9b59b6;  /* Purple accent for special elements */
+    --text-color: #333;       /* Main text color */
+    --text-light: #666;       /* Secondary text color */
+    --bg-color: #f8f9fa;      /* Main background color */
+    --card-bg: #ffffff;       /* Card background color */
+    --border-radius: 8px;     /* Consistent border radius */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08); /* Medium shadow */
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);  /* Larger shadow */
+    --transition: all 0.3s ease; /* Consistent transition */
 }
 
-/* Global Styles */
+/* ===== Reset & Base Styles ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Roboto', sans-serif; /* Google Font placeholder - include link in HTML head if needed */
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    transition: background-color 0.3s ease;
-    padding-top: 70px; /* for sticky header offset */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    scroll-padding-top: 80px; /* Account for fixed header */
 }
 
-/* Header Section Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== Layout Container ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ===== Header & Navigation ===== */
 header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background: var(--primary-color);
-    color: #fff;
-    box-shadow: 0 2px 4px var(--light-shadow);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-sm);
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+    padding: 1rem 0;
+    transition: var(--transition);
 }
 
 header h1 {
-    padding: 15px 20px;
     font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
 }
 
 nav ul {
-    list-style: none;
     display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
+    gap: 2rem;
+    padding: 0;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
 }
 
 nav ul li a:hover {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
+    color: var(--primary-color);
 }
 
-/* Section Styles (About, Education, Skills, Contact) */
-main section {
-    padding: 60px 20px;
-    margin: 20px auto;
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ===== Main Content Sections ===== */
+main {
+    margin-top: 120px; /* Account for fixed header */
+    padding: 2rem 0;
+}
+
+section {
+    margin: 0 auto 3rem;
     max-width: 1000px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--light-shadow);
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
+    animation: fadeInUp 0.8s forwards;
 }
 
-/* Apply staggered animation delays for sections */
-main section:nth-of-type(1) {
-    animation-delay: 0.2s;
-}
-main section:nth-of-type(2) {
-    animation-delay: 0.4s;
-}
-main section:nth-of-type(3) {
-    animation-delay: 0.6s;
-}
-main section:nth-of-type(4) {
-    animation-delay: 0.8s;
+section:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
 }
 
-/* Keyframes for fade-in and slide-up animation */
+/* Staggered animation for sections */
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.3s; }
+section:nth-child(3) { animation-delay: 0.5s; }
+section:nth-child(4) { animation-delay: 0.7s; }
+section:nth-child(5) { animation-delay: 0.9s; }
+
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -100,273 +177,334 @@ main section:nth-of-type(4) {
     }
 }
 
-/* Skills Section Styles */
-#skills ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    justify-content: space-around;
-    padding: 0;
+section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    position: relative;
 }
 
-#skills ul li {
-    background: var(--primary-color);
-    color: #fff;
-    margin: 10px;
-    padding: 15px 20px;
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* ===== About Section ===== */
+#about p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* ===== Education Section ===== */
+#education p {
+    font-size: 1.05rem;
+    margin-bottom: 0.8rem;
+}
+
+#education p:last-child {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* ===== Skills Section ===== */
+#skills ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#skills li {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-align: center;
+    transition: var(--transition);
+    border-left: 3px solid var(--primary-color);
+}
+
+#skills li:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background-color: var(--primary-color);
+    color: white;
+    border-left-color: var(--accent-color);
+}
+
+/* ===== Projects Section ===== */
+#projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    padding: 1.5rem;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-dark);
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
     border-radius: 4px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    flex: 1 1 200px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    background-color: var(--primary-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== Contact Section ===== */
+#contact {
     text-align: center;
 }
 
-#skills ul li:hover {
-    background-color: var(--accent-color);
-    transform: scale(1.05);
+#contact p {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
 }
 
-/* Contact Section Styles */
 #contact a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: var(--transition);
 }
 
 #contact a:hover {
-    color: var(--accent-color);
+    background-color: var(--primary-light);
 }
 
-/* Responsive Design */
-@media(max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
-    nav ul li {
-        margin: 10px 0;
-    }
-    main section {
-        margin: 20px 10px;
-    }
-}
-
-/* Chatbot Section Styles */
+/* ===== Chatbot Section ===== */
 #chatbot {
-    margin: 20px auto;
-    max-width: 1000px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px var(--light-shadow);
+    max-width: 800px;
+    margin: 3rem auto;
 }
 
 .chatbot-container {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chatbot-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.chatbot-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.chat-samples ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.chat-samples li {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.chat-samples li:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .chat-window {
     height: 300px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
     overflow-y: auto;
-    border: 1px solid var(--light-shadow);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    background-color: #fafafa;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .chat-input-container {
     display: flex;
+    gap: 0.5rem;
 }
 
 .chat-input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid var(--light-shadow);
-    border-radius: 4px 0 0 4px;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    transition: var(--transition);
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
 .chat-send {
-    padding: 10px 20px;
+    padding: 0.8rem 1.5rem;
     background-color: var(--primary-color);
-    color: #fff;
+    color: white;
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: var(--border-radius);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
 }
 
 .chat-send:hover {
-    background-color: var(--accent-color);
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
-.chatbot-header .chat-samples ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px auto 0;
-    display: inline-flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.chatbot-header .chat-samples ul li {
-    background-color: var(--background-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 15px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    cursor: default;
-}
-
-.chatbot-header .chat-samples ul li:hover {
-    background-color: var(--accent-color);
-    color: #fff;
-    transform: scale(1.05);
-    transition: transform 0.2s;
-}
-
-.chatbot-header .chat-samples ul li.clicked {
-    transform: scale(0.95);
-    transition: transform 0.1s;
-}
-
-/* Hidden header style for mobile scroll behavior */
-.header-hidden {
-    transform: translateY(-100%);
-}
-
-/* Responsive design adjustments for phone screens */
-@media (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-    header h1, .chatbot-header h2 {
-        font-size: 1.5rem;
-    }
-    .chatbot-container {
-        padding: 10px;
-    }
-    .chat-window {
-        height: 200px;
-    }
-    .chat-input {
-        padding: 8px;
-    }
-    .chat-send {
-        padding: 8px 16px;
-    }
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-    background: var(--primary-color);
-    color: #fff;
-}
-
-/* Projects Section Styles */
-#projects {
-    padding: 60px 20px;
-    margin: 20px auto;
-    max-width: 1000px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px var(--light-shadow);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
-    animation-delay: 0.7s; /* Follow the staggered animation pattern */
-}
-
-#projects h2 {
-    margin-bottom: 30px;
-    color: var(--primary-color);
-    text-align: center;
-}
-
-#projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.project-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px var(--light-shadow);
-    padding: 25px;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-/* Project card reveal animation styles */
-.project-hidden {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.project-card.revealed {
-    opacity: 1;
+.chat-send:active {
     transform: translateY(0);
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px var(--light-shadow);
-}
-
-.project-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-}
-
-.project-card p {
-    color: var(--text-color);
-    margin-bottom: 20px;
-    flex-grow: 1;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.project-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+/* ===== Footer Section ===== */
+footer {
     text-align: center;
-    font-weight: 500;
+    padding: 2rem;
+    background-color: var(--primary-dark);
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 3rem;
 }
 
-.project-link:hover {
-    background-color: var(--accent-color);
-    transform: scale(1.05);
-}
-
-/* Responsive adjustments for Projects section */
-@media (max-width: 768px) {
-    #projects-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+    
+    nav ul {
+        gap: 1.5rem;
+    }
+    
+    section {
+        padding: 2rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 0;
+    }
+    
+    header h1 {
+        padding-bottom: 0.5rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 1.5rem;
+    }
+    
+    section {
+        padding: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
     #projects-container {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
     
-    .project-card {
-        padding: 20px;
+    main {
+        margin-top: 100px;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    section h2 {
+        font-size: 1.5rem;
+    }
+    
+    #about p, #education p {
+        font-size: 1rem;
+    }
+    
+    #skills ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-samples ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .chat-input-container {
+        flex-direction: column;
+    }
+    
+    .chat-input, .chat-send {
+        width: 100%;
+        border-radius: var(--border-radius);
     }
 }
